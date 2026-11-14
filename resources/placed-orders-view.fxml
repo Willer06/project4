@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="504.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <HBox alignment="BOTTOM_CENTER" prefHeight="133.0" prefWidth="600.0" style="-fx-background-color: #C2C8CC;">
+         <children>
+            <Label alignment="BOTTOM_CENTER" prefHeight="70.0" prefWidth="267.0" text="Orders Placed" textFill="#262d74">
+               <font>
+                  <Font name="Comic Sans MS" size="39.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="4.0" style="-fx-background-color: #C2C8CC;">
+         <children>
+            <ComboBox prefWidth="150.0">
+               <HBox.margin>
+                  <Insets right="55.0" />
+               </HBox.margin>
+            </ComboBox>
+            <Label text="Total Amount">
+               <HBox.margin>
+                  <Insets left="55.0" />
+               </HBox.margin>
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <TextField />
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="259.0" prefWidth="600.0" style="-fx-background-color: #C2C8CC;">
+         <children>
+            <TextField alignment="CENTER" prefHeight="213.0" prefWidth="518.0" />
+         </children>
+      </HBox>
+      <HBox alignment="TOP_CENTER" prefHeight="73.0" prefWidth="600.0" spacing="35.0" style="-fx-background-color: #C2C8CC;">
+         <children>
+            <Button mnemonicParsing="false" prefHeight="41.0" prefWidth="165.0" style="-fx-background-radius: 20;" text="Cancel Order" />
+            <Button mnemonicParsing="false" prefHeight="41.0" prefWidth="167.0" style="-fx-background-radius: 20;" text="Export Orders" />
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #C2C8CC;">
+         <children>
+            <Button mnemonicParsing="false" prefHeight="42.0" prefWidth="95.0" style="-fx-background-radius: 20;" text="Main Menu" />
+         </children>
+      </HBox>
+   </children>
+</VBox>
