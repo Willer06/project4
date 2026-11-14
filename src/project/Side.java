@@ -1,4 +1,4 @@
-package java;
+package project;
 
 public enum Side {
     //you can change any if you want I think that we can pick any we want

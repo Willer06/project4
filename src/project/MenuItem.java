@@ -1,4 +1,4 @@
-package java;
+package project;
 
 public abstract class MenuItem {
     protected int quantity;

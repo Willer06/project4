@@ -1,4 +1,4 @@
-package java;
+package project;
 
 public class Combo extends MenuItem{
     private Sandwich sandwich;

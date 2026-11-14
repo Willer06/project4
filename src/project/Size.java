@@ -1,4 +1,4 @@
-package java;
+package project;
 
 public enum Size {
     SMALL,

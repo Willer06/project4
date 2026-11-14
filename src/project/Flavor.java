@@ -1,4 +1,4 @@
-package java;
+package project;
 
 public enum Flavor {
     //in this part the flavors are up to us, I've pick these,
