@@ -6,10 +6,13 @@ public class Order {
     private int number; //a unique integer to identify the order
     private ArrayList<MenuItem> items;
 
-    public Order() {
-        // TODO: set this.number to some unique integer
+    public Order(int number) {
+        this.number = number;
+        this.items = new ArrayList<>();
+    }
 
-        items = new ArrayList<>();
+    public ArrayList<MenuItem> getItems() {
+        return items;
     }
 
     public void addItem(MenuItem item) {

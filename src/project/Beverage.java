@@ -21,9 +21,9 @@ public class Beverage extends MenuItem {
     @Override
     public double price() {
         switch(size) {
-            case SMALL:     return 1.99;
-            case MEDIUM:    return 2.49;
-            case LARGE:     return 2.99;
+            case SMALL:     return quantity * 1.99;
+            case MEDIUM:    return quantity * 2.49;
+            case LARGE:     return quantity * 2.99;
             default:        return 0.0;
         }
     }

@@ -42,6 +42,7 @@ public class MainController {
     @FXML 
     private void switchToBeverageView() {
         ViewController.switchView("../resources/beverage-view.fxml");
+        BeverageController.initializeCurrBeverage();
     }
 
     @FXML 
@@ -52,6 +53,7 @@ public class MainController {
     @FXML 
     private void switchToCurrentOrderView() {
         ViewController.switchView("../resources/current-order-view.fxml");
+        CurrentOrderController.loadCurrentOrder();
     }
 
     @FXML 

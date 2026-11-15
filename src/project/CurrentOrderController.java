@@ -1,11 +1,58 @@
 package project;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-
-import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
 
 public class CurrentOrderController {
+    private static int uniqueOrderNumber;
+    public static Order currOrder;
+
+    @FXML 
+    private TextField subTotalTextField;
+
+    @FXML 
+    private TextField salesTaxTextField;
+
+    private static final double SALES_TAX = 0.06625;
+
+    @FXML 
+    private TextField totalAmountTextField;
+
+    @FXML 
+    private ListView currentOrderListView;
+    
+    private static CurrentOrderController instance;
+
+    static {
+        uniqueOrderNumber = 1;
+        currOrder = new Order(uniqueOrderNumber);
+    }
+
+    @FXML 
+    public void initialize() {
+        instance = this;
+    }
+
+    public static void startNewOrder() {
+        uniqueOrderNumber++;
+        currOrder = new Order(uniqueOrderNumber);
+    }
+
+    public static void loadCurrentOrder() {
+        instance.currentOrderListView.getItems().clear();
+
+        double subTotal = 0.0;
+        for(MenuItem item : currOrder.getItems()) {
+            subTotal += item.price();
+            instance.currentOrderListView.getItems().add(item.toString());
+        }
+
+        instance.subTotalTextField.setText(subTotal + "");
+        instance.salesTaxTextField.setText((subTotal * SALES_TAX) + "");
+        instance.totalAmountTextField.setText((subTotal * (1 + SALES_TAX)) + "");
+    }
+
     @FXML
     private void switchToMainView() {
         ViewController.switchView("../resources/main-view.fxml");

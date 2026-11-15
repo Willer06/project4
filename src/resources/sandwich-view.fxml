@@ -116,12 +116,12 @@
             </HBox>
             <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #9CBAB8;">
                <children>
-                  <Label alignment="CENTER" prefHeight="46.0" prefWidth="132.0" text="quantity">
+                  <Label alignment="CENTER" prefHeight="46.0" prefWidth="132.0" text="Quantity">
                      <font>
                         <Font name="Arial Bold" size="24.0" />
                      </font>
                   </Label>
-                  <ComboBox prefHeight="26.0" prefWidth="113.0">
+                  <ComboBox fx:id="quantityComboBox" prefHeight="26.0" prefWidth="113.0">
                      <items>
                         <FXCollections fx:factory="observableArrayList">
                            <Integer fx:value="1" />
@@ -141,12 +141,12 @@
       </VBox>
       <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="15.0" style="-fx-background-color: #81BAAA;">
          <children>
-            <Label alignment="CENTER" prefHeight="82.0" prefWidth="114.0" text="price">
+            <Label alignment="CENTER" prefHeight="82.0" prefWidth="114.0" text="Price">
                <font>
                   <Font name="Arial Bold" size="24.0" />
                </font>
             </Label>
-            <TextField prefHeight="25.0" prefWidth="119.0" editable="false"/>
+            <TextField fx:id="priceTextField" editable="false" prefHeight="25.0" prefWidth="119.0" />
             <Button mnemonicParsing="false" prefHeight="42.0" prefWidth="121.0" style="-fx-background-radius: 50;" text="add to order">
                <font>
                   <Font name="Arial Bold" size="16.0" />
