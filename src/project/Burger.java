@@ -11,4 +11,9 @@ public class Burger extends Sandwich {
     public void setDoublePatty(boolean doublePatty) {
         this.doublePatty = doublePatty;
     }
+
+    @Override 
+    public double price() {
+        return 0;
+    }
 }

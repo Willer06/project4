@@ -22,6 +22,6 @@ public class Combo extends MenuItem {
 
     @Override
     public double price() {
-        return 0;
+        return quantity * (sandwich.price() + drink.price() + side.price());
     }
 }

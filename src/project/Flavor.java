@@ -1,8 +1,6 @@
 package project;
 
 public enum Flavor {
-    //in this part the flavors are up to us, I've pick these,
-    // but you can change any if you want
     COLA,
     LIME,
     ORANGE,

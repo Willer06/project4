@@ -32,6 +32,11 @@ public class Sandwich extends MenuItem {
 
     @Override
     public double price() {
-        return 0;
+        double addOnPrice = 0.0;
+        for(AddOns addOn : addOns) {
+            addOnPrice += addOn.getPrice();
+        }
+
+        return quantity * (protein.getPrice() + addOnPrice);
     }
 }
