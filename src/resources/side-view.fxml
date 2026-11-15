@@ -44,7 +44,7 @@
                                     <Font name="Arial Bold" size="18.0" />
                                  </font>
                               </Label>
-                              <ListView prefHeight="157.0" prefWidth="187.0" style="-fx-background-radius: 20;" />
+                              <ListView fx:id="sideOptionListView" onMouseClicked="#updateCurrSide" prefHeight="157.0" prefWidth="187.0" style="-fx-background-radius: 20;" />
                            </children>
                         </HBox>
                      </children>
@@ -58,7 +58,7 @@
                                     <Font name="Arial Bold" size="16.0" />
                                  </font>
                               </Label>
-                              <ComboBox prefHeight="25.0" prefWidth="131.0">
+                              <ComboBox fx:id="sizeComboBox" onAction="#updateCurrSide" prefHeight="25.0" prefWidth="131.0">
                                  <HBox.margin>
                                     <Insets left="21.0" />
                                  </HBox.margin>
@@ -72,7 +72,7 @@
                                     <Font name="Arial Bold" size="16.0" />
                                  </font>
                               </Label>
-                           <ComboBox fx:id="quantityComboBox" prefHeight="26.0" prefWidth="113.0">
+                           <ComboBox fx:id="quantityComboBox" onAction="#updateCurrSide" prefHeight="26.0" prefWidth="113.0">
                               <items>
                                  <FXCollections fx:factory="observableArrayList">
                                     <Integer fx:value="1" />
@@ -100,7 +100,7 @@
                      </font>
                   </Label>
                   <TextField fx:id="priceTextField" editable="false" prefHeight="25.0" prefWidth="123.0" />
-                  <Button mnemonicParsing="false" prefHeight="51.0" prefWidth="187.0" style="-fx-background-radius: 100; -fx-background-color: #EC407A;" text="add to order">
+                  <Button fx:id="addToOrderButton" onAction="#addToOrder" mnemonicParsing="false" prefHeight="51.0" prefWidth="187.0" style="-fx-background-radius: 100; -fx-background-color: #EC407A;" text="Add to order">
                      <HBox.margin>
                         <Insets left="15.0" />
                      </HBox.margin>

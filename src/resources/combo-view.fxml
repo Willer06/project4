@@ -86,7 +86,7 @@
                </font>
             </Label>
             <TextField fx:id="priceTextField" editable="false" prefHeight="25.0" prefWidth="92.0" />
-            <Button mnemonicParsing="false" prefHeight="49.0" prefWidth="146.0" style="-fx-background-radius: 100; -fx-background-color: #BEB6FF;" text="add to order">
+            <Button fx:id="addToOrderButton" onAction="#addToOrder" mnemonicParsing="false" prefHeight="49.0" prefWidth="146.0" style="-fx-background-radius: 100; -fx-background-color: #BEB6FF;" text="Add to order">
                <font>
                   <Font name="Arial Bold" size="16.0" />
                </font>
