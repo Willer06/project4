@@ -20,14 +20,12 @@ public class Side extends MenuItem {
 
     @Override 
     public double price() {
-        double singlePrice = 0.0;
         switch(size) {
-            case SMALL:     singlePrice = sideOption.getPrice();
-            case MEDIUM:    singlePrice = sideOption.getPrice() + 0.50;
-            case LARGE:     singlePrice = sideOption.getPrice() + 1.00;
+            case SMALL:     return quantity * sideOption.getPrice();
+            case MEDIUM:    return quantity * (sideOption.getPrice() + 0.50);
+            case LARGE:     return quantity * (sideOption.getPrice() + 1.00);
+            default:        return 0.0;
         }
-
-        return quantity * singlePrice;
     }
 
     @Override 

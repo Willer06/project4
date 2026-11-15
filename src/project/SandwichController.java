@@ -6,12 +6,10 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
 public class SandwichController {
-    private static Sandwich sandwich;
 
-
+    @FXML 
+    private void addToOrder() {
     
-    public static void createNewSandwich() {
-
     }
 
     @FXML

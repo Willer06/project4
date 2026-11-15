@@ -48,6 +48,7 @@ public class MainController {
     @FXML 
     private void switchToSideView() {
         ViewController.switchView("../resources/side-view.fxml");
+        SideController.initializeCurrSide();
     }
 
     @FXML 

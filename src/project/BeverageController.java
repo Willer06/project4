@@ -1,13 +1,10 @@
 package project;
 
 import javafx.collections.FXCollections;
-
 import javafx.fxml.FXML;
-
 import javafx.scene.control.ListView;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
-import javafx.scene.control.Button;
 
 public class BeverageController {
     @FXML 
@@ -49,7 +46,7 @@ public class BeverageController {
         
         currBeverage = new Beverage(quantity, size, flavor);
 
-        priceTextField.setText(currBeverage.price() + "");
+        priceTextField.setText(String.format("%.2f", currBeverage.price()));
     }
 
     @FXML 
