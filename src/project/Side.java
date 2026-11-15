@@ -29,4 +29,14 @@ public class Side extends MenuItem {
 
         return quantity * singlePrice;
     }
+
+    @Override 
+    public String toString() {
+        return String.format("Side, [%s, %s] [%d] $%.2f", 
+            sideOption.toString(), 
+            size.toString(),
+            quantity,
+            price()
+        );
+    }
 }

@@ -3,13 +3,13 @@ package project;
 public class Burger extends Sandwich {
     private boolean doublePatty;
 
-    public Burger(int quantity, Bread bread) {
+    public Burger(int quantity, Bread bread, boolean doublePatty) {
         super(quantity, bread, Protein.BEEF_PATTY);
-        this.doublePatty = false;
+        this.doublePatty = doublePatty;
     }
 
-    public void setDoublePatty(boolean doublePatty) {
-        this.doublePatty = doublePatty;
+    public boolean getDoublePatty() {
+        return doublePatty;
     }
 
     @Override 
@@ -21,5 +21,22 @@ public class Burger extends Sandwich {
 
         double proteinPrice = doublePatty ? protein.getPrice() + 2.50 : protein.getPrice();
         return quantity * (proteinPrice + addOnPrice);
+    }
+
+    @Override 
+    public String toString() {
+        StringBuilder addOnString = new StringBuilder();
+        for(int i = 0; i < addOns.size(); i++) {
+            addOnString.append(addOns.get(i).toString());
+            if(i != addOns.size() - 1) addOnString.append(", ");
+        }
+
+        return String.format("Burger, %s [%s] [%s] [%d] $.2f",
+            doublePatty ? "double" : "single",
+            bread.toString(),
+            addOnString.toString(),
+            quantity,
+            price()
+        );
     }
 }

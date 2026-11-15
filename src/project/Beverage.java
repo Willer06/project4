@@ -10,13 +10,14 @@ public class Beverage extends MenuItem {
         this.flavor = flavor;
     }
 
-    public void setSize(Size size) {
-        this.size = size;
-    }
+    // public void setSize(Size size) {
+    //     this.size = size;
+    // }
 
-    public void setFlavor(Flavor flavor) {
-        this.flavor = flavor;
-    }
+    // public void setFlavor(Flavor flavor) {
+    //     this.flavor = flavor;
+    // }
+
 
     @Override
     public double price() {
@@ -26,5 +27,10 @@ public class Beverage extends MenuItem {
             case LARGE:     return quantity * 2.99;
             default:        return 0.0;
         }
+    }
+
+    @Override 
+    public String toString() {
+        return String.format("%s, %s [%d] $%.2f", flavor.toString(), size.toString(), quantity, price());
     }
 }

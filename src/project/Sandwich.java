@@ -39,4 +39,21 @@ public class Sandwich extends MenuItem {
 
         return quantity * (protein.getPrice() + addOnPrice);
     }
+
+    @Override 
+    public String toString() {
+        StringBuilder addOnString = new StringBuilder();
+        for(int i = 0; i < addOns.size(); i++) {
+            addOnString.append(addOns.get(i).toString());
+            if(i != addOns.size() - 1) addOnString.append(", ");
+        }
+
+        return String.format("Sandwich, [%s] [%s] [%s] [%d] $.2f",
+            protein.toString(),
+            bread.toString(),
+            addOnString.toString(),
+            quantity,
+            price()
+        );
+    }
 }

@@ -48,9 +48,9 @@ public class CurrentOrderController {
             instance.currentOrderListView.getItems().add(item.toString());
         }
 
-        instance.subTotalTextField.setText(subTotal + "");
-        instance.salesTaxTextField.setText((subTotal * SALES_TAX) + "");
-        instance.totalAmountTextField.setText((subTotal * (1 + SALES_TAX)) + "");
+        instance.subTotalTextField.setText(String.format("%.2f", subTotal));
+        instance.salesTaxTextField.setText(String.format("%.2f", subTotal * SALES_TAX));
+        instance.totalAmountTextField.setText(String.format("%.2f", subTotal * (1 + SALES_TAX)));
     }
 
     @FXML
