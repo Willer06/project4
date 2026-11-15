@@ -14,6 +14,12 @@ public class Burger extends Sandwich {
 
     @Override 
     public double price() {
-        return 0;
+        double addOnPrice = 0.0;
+        for(AddOns addOn : addOns) {
+            addOnPrice += addOn.getPrice();
+        }
+
+        double proteinPrice = doublePatty ? protein.getPrice() + 2.50 : protein.getPrice();
+        return quantity * (proteinPrice + addOnPrice);
     }
 }
