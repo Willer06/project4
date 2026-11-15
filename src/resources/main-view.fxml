@@ -14,7 +14,7 @@
    <children>
       <VBox layoutX="260.0" layoutY="11.0" prefHeight="376.0" prefWidth="326.0">
          <children>
-            <Button fx:id="burgersButton" onAction="#switchToBurgers" alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="84.0" prefWidth="379.0" style="-fx-background-radius: 20; -fx-background-color: #FF8577; -fx-border-color: #42020C; -fx-border-radius: 20;" text="Burgers">
+            <Button fx:id="burgersButton" onAction="#switchToBurgerView" alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="84.0" prefWidth="379.0" style="-fx-background-radius: 20; -fx-background-color: #FF8577; -fx-border-color: #42020C; -fx-border-radius: 20;" text="Burgers">
                <graphic>
                   <ImageView fitHeight="68.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -29,7 +29,7 @@
                   <Font name="Arial Bold" size="25.0" />
                </font>
             </Button>
-            <Button fx:id="sandwichesButton" onAction="#switchToSandwiches" alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="74.0" prefWidth="357.0" style="-fx-background-radius: 20; -fx-background-color: #FF8577; -fx-border-color: #42020C; -fx-border-radius: 20;" text="Sandwiches" textAlignment="RIGHT">
+            <Button fx:id="sandwichesButton" onAction="#switchToSandwichView" alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="74.0" prefWidth="357.0" style="-fx-background-radius: 20; -fx-background-color: #FF8577; -fx-border-color: #42020C; -fx-border-radius: 20;" text="Sandwiches" textAlignment="RIGHT">
                <graphic>
                   <ImageView fitHeight="58.0" fitWidth="92.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -41,7 +41,7 @@
                   <Font name="Arial Bold" size="25.0" />
                </font>
             </Button>
-            <Button fx:id="beveragesButton" onAction="#switchToBeverages" alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="87.0" prefWidth="365.0" style="-fx-background-radius: 20; -fx-background-color: #FF8577; -fx-border-color: #42020C; -fx-border-radius: 20;" text="Beverages">
+            <Button fx:id="beveragesButton" onAction="#switchToBeverageView" alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="87.0" prefWidth="365.0" style="-fx-background-radius: 20; -fx-background-color: #FF8577; -fx-border-color: #42020C; -fx-border-radius: 20;" text="Beverages">
                <graphic>
                   <ImageView fitHeight="71.0" fitWidth="79.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -53,7 +53,7 @@
                   <Font name="Arial Bold" size="25.0" />
                </font>
             </Button>
-            <Button fx:id="sidesButton" onAction="#switchToSides" alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="87.0" prefWidth="359.0" style="-fx-background-radius: 20; -fx-background-color: #FF8577; -fx-border-color: #42020C; -fx-border-radius: 20;" text="Sides">
+            <Button fx:id="sidesButton" onAction="#switchToSideView" alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="87.0" prefWidth="359.0" style="-fx-background-radius: 20; -fx-background-color: #FF8577; -fx-border-color: #42020C; -fx-border-radius: 20;" text="Sides">
                <graphic>
                   <ImageView depthTest="DISABLE" fitHeight="71.0" fitWidth="74.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -79,7 +79,7 @@
       </Label>
       <HBox layoutX="258.0" layoutY="364.0" prefHeight="90.0" prefWidth="326.0">
          <children>
-            <Button fx:id="cartButton" mnemonicParsing="false" prefHeight="68.0" prefWidth="167.0" style="-fx-background-radius: 50; -fx-background-color: #FF8577; -fx-border-color: #42020C; -fx-border-radius: 50;">
+            <Button fx:id="currentOrderButton" onAction="#switchToCurrentOrderView" mnemonicParsing="false" prefHeight="68.0" prefWidth="167.0" style="-fx-background-radius: 50; -fx-background-color: #FF8577; -fx-border-color: #42020C; -fx-border-radius: 50;">
                <graphic>
                   <ImageView fitHeight="60.0" fitWidth="121.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -88,7 +88,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="receiptButton" mnemonicParsing="false" prefHeight="68.0" prefWidth="159.0" style="-fx-background-radius: 50; -fx-background-color: #FF8577; -fx-border-color: #42020C; -fx-border-radius: 50;">
+            <Button fx:id="ordersPlacedButton" onAction="#switchToOrdersPlacedView" mnemonicParsing="false" prefHeight="68.0" prefWidth="159.0" style="-fx-background-radius: 50; -fx-background-color: #FF8577; -fx-border-color: #42020C; -fx-border-radius: 50;">
                <graphic>
                   <ImageView fitHeight="59.0" fitWidth="146.0" pickOnBounds="true" preserveRatio="true">
                      <image>

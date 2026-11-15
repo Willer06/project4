@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="504.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1">
+<VBox fx:controller="project.BurgerController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="504.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <HBox prefHeight="176.0" prefWidth="600.0" spacing="100.0" style="-fx-background-color: #FF7253;">
          <children>
@@ -140,7 +140,7 @@
       </HBox>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #FF445B;">
          <children>
-            <Button alignment="CENTER" mnemonicParsing="false" prefHeight="33.0" prefWidth="107.0" style="-fx-background-color: #6B222F; -fx-background-radius: 100;" text="Main Menu" textFill="WHITE">
+            <Button onAction="#switchToMainView" alignment="CENTER" mnemonicParsing="false" prefHeight="33.0" prefWidth="107.0" style="-fx-background-color: #6B222F; -fx-background-radius: 100;" text="Main Menu" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font></Button>

@@ -13,8 +13,8 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) {
         Scene scene = new Scene(new Pane(), STAGE_WIDTH, STAGE_HEIGHT);
-        ViewSwitcher.setScene(scene);
-        ViewSwitcher.switchView("../resources/main-view.fxml");
+        ViewController.setScene(scene);
+        ViewController.switchView("../resources/main-view.fxml");
 
         stage.setTitle(STAGE_TITLE);
         stage.setScene(scene);

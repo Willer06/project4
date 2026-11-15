@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="539.0" prefWidth="600.0" style="-fx-background-color: #FFE6C2;" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1">
+<VBox fx:controller="project.CurrentOrderController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="539.0" prefWidth="600.0" style="-fx-background-color: #FFE6C2;" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <HBox prefHeight="107.0" prefWidth="600.0">
          <children>
@@ -88,7 +88,7 @@
       </HBox>
       <HBox alignment="CENTER" prefHeight="71.0" prefWidth="600.0" style="-fx-background-color: #FFE6C2;">
          <children>
-            <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="106.0" style="-fx-background-radius: 50; -fx-background-color: #FFAA90;" text="Main menu">
+            <Button onAction="#switchToMainView" mnemonicParsing="false" prefHeight="40.0" prefWidth="106.0" style="-fx-background-radius: 50; -fx-background-color: #FFAA90;" text="Main menu">
                <font>
                   <Font name="Arial Bold" size="14.0" />
                </font></Button>

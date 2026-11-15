@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="504.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1">
+<VBox fx:controller="project.OrdersPlacedController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="504.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <HBox alignment="BOTTOM_CENTER" prefHeight="133.0" prefWidth="600.0" style="-fx-background-color: #C2C8CC;">
          <children>
@@ -51,7 +51,7 @@
       </HBox>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #C2C8CC;">
          <children>
-            <Button mnemonicParsing="false" prefHeight="42.0" prefWidth="95.0" style="-fx-background-radius: 20;" text="Main Menu" />
+            <Button onAction="#switchToMainView" mnemonicParsing="false" prefHeight="42.0" prefWidth="95.0" style="-fx-background-radius: 20;" text="Main Menu" />
          </children>
       </HBox>
    </children>

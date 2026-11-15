@@ -6,52 +6,56 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
 public class MainController {
-    @FXML 
-    private Button burgersButton;
+    // @FXML 
+    // private Button burgersButton;
 
-    @FXML 
-    private Button sandwichesButton;
+    // @FXML 
+    // private Button sandwichesButton;
 
-    @FXML 
-    private Button beveragesButton;
+    // @FXML 
+    // private Button beveragesButton;
 
-    @FXML 
-    private Button sidesButton;
+    // @FXML 
+    // private Button sidesButton;
 
-    @FXML 
-    private Button cartButton;
+    // @FXML 
+    // private Button currentOrderButton;
 
-    @FXML 
-    private Button receiptButton;
+    // @FXML 
+    // private Button ordersPlacedButton;
 
-    
-    @FXML 
-    private void switchToBurgers() {
-        ViewSwitcher.switchView("../resources/burger-view.fxml");
+    @FXML
+    private void switchToMainView() {
+        ViewController.switchView("../resources/main-view.fxml");
     }
 
     @FXML 
-    private void switchToSandwiches() {
-        ViewSwitcher.switchView("../resources/sandwich-view.fxml");
+    private void switchToBurgerView() {
+        ViewController.switchView("../resources/burger-view.fxml");
     }
 
     @FXML 
-    private void switchToBeverages() {
-        ViewSwitcher.switchView("../resources/beverage-view.fxml");
+    private void switchToSandwichView() {
+        ViewController.switchView("../resources/sandwich-view.fxml");
     }
 
     @FXML 
-    private void switchToSides() {
-        ViewSwitcher.switchView("../resources/side-view.fxml");
+    private void switchToBeverageView() {
+        ViewController.switchView("../resources/beverage-view.fxml");
     }
 
     @FXML 
-    private void switchToCart() {
-        
+    private void switchToSideView() {
+        ViewController.switchView("../resources/side-view.fxml");
     }
 
     @FXML 
-    private void switchToReceipt() {
-        
+    private void switchToCurrentOrderView() {
+        ViewController.switchView("../resources/current-order-view.fxml");
+    }
+
+    @FXML 
+    private void switchToOrdersPlacedView() {
+        ViewController.switchView("../resources/orders-placed-view.fxml");
     }
 }
