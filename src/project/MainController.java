@@ -37,6 +37,7 @@ public class MainController {
     @FXML 
     private void switchToSandwichView() {
         ViewController.switchView("../resources/sandwich-view.fxml");
+        SandwichController.initializeCurrSandwich();
     }
 
     @FXML 

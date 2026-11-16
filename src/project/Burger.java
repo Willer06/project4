@@ -1,10 +1,12 @@
 package project;
 
+import java.util.ArrayList;
+
 public class Burger extends Sandwich {
     private boolean doublePatty;
 
-    public Burger(int quantity, Bread bread, boolean doublePatty) {
-        super(quantity, bread, Protein.BEEF_PATTY);
+    public Burger(int quantity, Bread bread, ArrayList<AddOns> addOns, boolean doublePatty) {
+        super(quantity, bread, Protein.BEEF_PATTY, addOns);
         this.doublePatty = doublePatty;
     }
 

@@ -7,28 +7,28 @@ public class Sandwich extends MenuItem {
     protected Protein protein;
     protected ArrayList<AddOns> addOns;
 
-    public Sandwich(int quantity, Bread bread, Protein protein) {
+    public Sandwich(int quantity, Bread bread, Protein protein, ArrayList<AddOns> addOns) {
         super(quantity);
         this.bread = bread;
         this.protein = protein;
-        this.addOns = new ArrayList<>();
+        this.addOns = addOns;
     }
 
-    public void setBread(Bread bread) {
-        this.bread = bread;
-    }
+    // public void setBread(Bread bread) {
+    //     this.bread = bread;
+    // }
 
-    public void setProtein(Protein protein) {
-        this.protein = protein;
-    }
+    // public void setProtein(Protein protein) {
+    //     this.protein = protein;
+    // }
 
-    public void appendAddOn(AddOns addOn) {
-        this.addOns.add(addOn);
-    }
+    // public void appendAddOn(AddOns addOn) {
+    //     this.addOns.add(addOn);
+    // }
 
-    public void removeAddOn(AddOns addOn) {
-        this.addOns.remove(addOn);
-    }
+    // public void removeAddOn(AddOns addOn) {
+    //     this.addOns.remove(addOn);
+    // }
 
     @Override
     public double price() {
@@ -48,7 +48,7 @@ public class Sandwich extends MenuItem {
             if(i != addOns.size() - 1) addOnString.append(", ");
         }
 
-        return String.format("Sandwich, [%s] [%s] [%s] [%d] $.2f",
+        return String.format("Sandwich, [%s] [%s] [%s] [%d] $%.2f",
             protein.toString(),
             bread.toString(),
             addOnString.toString(),

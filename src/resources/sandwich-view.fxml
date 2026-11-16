@@ -15,6 +15,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.control.ToggleGroup?>
 
 <VBox fx:controller="project.SandwichController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="504.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1">
    <children>
@@ -37,82 +38,34 @@
       </HBox>
       <VBox prefHeight="200.0" prefWidth="100.0">
          <children>
-            <HBox prefHeight="100.0" prefWidth="200.0" spacing="14.0" style="-fx-background-color: #9CBAB8;">
-               <children>
-                  <Label alignment="CENTER" prefHeight="45.0" prefWidth="119.0" text="bread">
-                     <font>
-                        <Font name="Arial Bold" size="24.0" />
-                     </font>
-                  </Label>
-                  <RadioButton selected="true" mnemonicParsing="false" prefHeight="45.0" prefWidth="80.0" text="brioche">
-                     <font>
-                        <Font name="Arial" size="14.0" />
-                     </font>
-                  </RadioButton>
-                  <RadioButton mnemonicParsing="false" prefHeight="45.0" prefWidth="110.0" text="wheat bread">
-                     <font>
-                        <Font name="Arial" size="14.0" />
-                     </font>
-                  </RadioButton>
-                  <RadioButton mnemonicParsing="false" prefHeight="45.0" prefWidth="111.0" text="pretzel">
-                     <font>
-                        <Font name="Arial" size="14.0" />
-                     </font>
-                  </RadioButton>
-               </children>
+            <HBox fx:id="breadHBox" prefHeight="100.0" prefWidth="200.0" spacing="14.0" style="-fx-background-color: #9CBAB8;">
+               <fx:define>
+                  <ToggleGroup fx:id="breadToggleGroup" />
+               </fx:define>
+
+               <Label alignment="CENTER" prefHeight="45.0" prefWidth="119.0" text="bread">
+                  <font>
+                     <Font name="Arial Bold" size="24.0" />
+                  </font>
+               </Label>
             </HBox>
-            <HBox prefHeight="100.0" prefWidth="591.0" spacing="5.0" style="-fx-background-color: #9CBAB8;">
-               <children>
-                  <Label alignment="CENTER" prefHeight="45.0" prefWidth="129.0" text="protein">
-                     <font>
-                        <Font name="Arial Bold" size="24.0" />
-                     </font>
-                  </Label>
-                  <RadioButton selected="true" mnemonicParsing="false" prefHeight="45.0" prefWidth="94.0" text="roast beef">
-                     <font>
-                        <Font name="Arial" size="14.0" />
-                     </font>
-                  </RadioButton>
-                  <RadioButton mnemonicParsing="false" prefHeight="48.0" prefWidth="99.0" text="salmon">
-                     <font>
-                        <Font name="Arial" size="14.0" />
-                     </font>
-                  </RadioButton>
-                  <RadioButton mnemonicParsing="false" prefHeight="48.0" prefWidth="99.0" text="chicken">
-                     <font>
-                        <Font name="Arial" size="14.0" />
-                     </font>
-                  </RadioButton>
-               </children>
+            <HBox fx:id="proteinHBox" prefHeight="100.0" prefWidth="591.0" spacing="5.0" style="-fx-background-color: #9CBAB8;">
+               <fx:define>
+                  <ToggleGroup fx:id="proteinToggleGroup" />
+               </fx:define>
+
+               <Label alignment="CENTER" prefHeight="45.0" prefWidth="129.0" text="protein">
+                  <font>
+                     <Font name="Arial Bold" size="24.0" />
+                  </font>
+               </Label>
             </HBox>
-            <HBox prefHeight="100.0" prefWidth="200.0" spacing="12.0" style="-fx-background-color: #9CBAB8;">
-               <children>
-                  <Label alignment="CENTER" prefHeight="45.0" prefWidth="144.0" style="-fx-background-color: #9CBAB8;" text="add-on">
-                     <font>
-                        <Font name="Arial Bold" size="24.0" />
-                     </font>
-                  </Label>
-                  <CheckBox mnemonicParsing="false" prefHeight="51.0" prefWidth="104.0" style="-fx-background-color: #9CBAB8;" text="lettuce">
-                     <font>
-                        <Font name="Arial" size="14.0" />
-                     </font></CheckBox>
-                  <CheckBox mnemonicParsing="false" prefHeight="51.0" prefWidth="104.0" style="-fx-background-color: #9CBAB8;" text="tomatoes">
-                     <font>
-                        <Font name="Arial" size="14.0" />
-                     </font></CheckBox>
-                  <CheckBox mnemonicParsing="false" prefHeight="51.0" prefWidth="104.0" style="-fx-background-color: #9CBAB8;" text="onion">
-                     <font>
-                        <Font name="Arial" size="14.0" />
-                     </font></CheckBox>
-                  <CheckBox mnemonicParsing="false" prefHeight="51.0" prefWidth="104.0" style="-fx-background-color: #9CBAB8;" text="avocado">
-                     <font>
-                        <Font name="Arial" size="14.0" />
-                     </font></CheckBox>
-                  <CheckBox mnemonicParsing="false" prefHeight="51.0" prefWidth="104.0" style="-fx-background-color: #9CBAB8;" text="cheese">
-                     <font>
-                        <Font name="Arial" size="14.0" />
-                     </font></CheckBox>
-               </children>
+            <HBox fx:id="addOnHBox" prefHeight="100.0" prefWidth="200.0" spacing="12.0" style="-fx-background-color: #9CBAB8;">
+               <Label alignment="CENTER" prefHeight="45.0" prefWidth="144.0" style="-fx-background-color: #9CBAB8;" text="add-on">
+                  <font>
+                     <Font name="Arial Bold" size="24.0" />
+                  </font>
+               </Label>
             </HBox>
             <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #9CBAB8;">
                <children>
@@ -121,7 +74,7 @@
                         <Font name="Arial Bold" size="24.0" />
                      </font>
                   </Label>
-                  <ComboBox fx:id="quantityComboBox" prefHeight="26.0" prefWidth="113.0">
+                  <ComboBox fx:id="quantityComboBox" onAction="#updateCurrSandwich" prefHeight="26.0" prefWidth="113.0">
                      <items>
                         <FXCollections fx:factory="observableArrayList">
                            <Integer fx:value="1" />

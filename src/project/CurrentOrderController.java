@@ -50,7 +50,7 @@ public class CurrentOrderController {
 
         instance.subTotalTextField.setText(String.format("%.2f", subTotal));
         instance.salesTaxTextField.setText(String.format("%.2f", subTotal * SALES_TAX));
-        instance.totalAmountTextField.setText(String.format("%.2f", subTotal * (1 + SALES_TAX)));
+        instance.totalAmountTextField.setText(String.format("%.2f", subTotal + subTotal * SALES_TAX));
     }
 
     @FXML
