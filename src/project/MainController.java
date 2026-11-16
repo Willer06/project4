@@ -35,7 +35,7 @@ public class MainController {
     @FXML 
     private void switchToCurrentOrderView() {
         ViewController.switchView("../resources/current-order-view.fxml");
-        CurrentOrderController.loadCurrentOrder();
+        CurrentOrderController.initializeCurrentOrderListView();
     }
 
     @FXML 

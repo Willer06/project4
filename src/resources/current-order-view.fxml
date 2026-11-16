@@ -75,7 +75,7 @@
       </HBox>
       <HBox alignment="CENTER" prefHeight="77.0" prefWidth="600.0" spacing="30.0" style="-fx-background-color: #FFE6C2;">
          <children>
-            <Button mnemonicParsing="false" prefHeight="48.0" prefWidth="193.0" style="-fx-background-color: #FFAA90; -fx-background-radius: 100;" text="Remove  Selected Item">
+            <Button onAction="#handleRemoveItem" mnemonicParsing="false" prefHeight="48.0" prefWidth="193.0" style="-fx-background-color: #FFAA90; -fx-background-radius: 100;" text="Remove Selected Item">
                <font>
                   <Font name="Arial Bold" size="15.0" />
                </font></Button>

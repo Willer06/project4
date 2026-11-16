@@ -18,4 +18,8 @@ public class Order {
     public void addItem(MenuItem item) {
         items.add(item);
     }
+
+    public void removeItem(MenuItem item) {
+        items.remove(item);
+    }
 }

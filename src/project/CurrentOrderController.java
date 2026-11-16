@@ -39,18 +39,32 @@ public class CurrentOrderController {
         currOrder = new Order(uniqueOrderNumber);
     }
 
-    public static void loadCurrentOrder() {
-        instance.currentOrderListView.getItems().clear();
+    public static void initializeCurrentOrderListView() {
+        instance.updateCurrentOrderListView();
+    }
+
+    @FXML 
+    private void updateCurrentOrderListView() {
+        currentOrderListView.getItems().clear();
 
         double subTotal = 0.0;
         for(MenuItem item : currOrder.getItems()) {
             subTotal += item.price();
-            instance.currentOrderListView.getItems().add(item);
+            currentOrderListView.getItems().add(item);
         }
 
-        instance.subTotalTextField.setText(String.format("%.2f", subTotal));
-        instance.salesTaxTextField.setText(String.format("%.2f", subTotal * SALES_TAX));
-        instance.totalAmountTextField.setText(String.format("%.2f", subTotal + subTotal * SALES_TAX));
+        subTotalTextField.setText(String.format("%.2f", subTotal));
+        salesTaxTextField.setText(String.format("%.2f", subTotal * SALES_TAX));
+        totalAmountTextField.setText(String.format("%.2f", subTotal + subTotal * SALES_TAX));
+    }
+
+    @FXML 
+    private void handleRemoveItem() {
+        MenuItem selectedItem = currentOrderListView.getSelectionModel().getSelectedItem();
+        if(selectedItem == null) return;
+
+        currOrder.removeItem(selectedItem);
+        updateCurrentOrderListView();
     }
 
     @FXML
