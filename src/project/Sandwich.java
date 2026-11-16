@@ -14,22 +14,6 @@ public class Sandwich extends MenuItem {
         this.addOns = addOns;
     }
 
-    // public void setBread(Bread bread) {
-    //     this.bread = bread;
-    // }
-
-    // public void setProtein(Protein protein) {
-    //     this.protein = protein;
-    // }
-
-    // public void appendAddOn(AddOns addOn) {
-    //     this.addOns.add(addOn);
-    // }
-
-    // public void removeAddOn(AddOns addOn) {
-    //     this.addOns.remove(addOn);
-    // }
-
     @Override
     public double price() {
         double addOnPrice = 0.0;

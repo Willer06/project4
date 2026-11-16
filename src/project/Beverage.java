@@ -10,15 +10,6 @@ public class Beverage extends MenuItem {
         this.flavor = flavor;
     }
 
-    // public void setSize(Size size) {
-    //     this.size = size;
-    // }
-
-    // public void setFlavor(Flavor flavor) {
-    //     this.flavor = flavor;
-    // }
-
-
     @Override
     public double price() {
         switch(size) {
