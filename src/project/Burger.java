@@ -33,7 +33,7 @@ public class Burger extends Sandwich {
             if(i != addOns.size() - 1) addOnString.append(", ");
         }
 
-        return String.format("Burger, %s [%s] [%s] [%d] $.2f",
+        return String.format("Burger, %s [%s] [%s] [%d] $%.2f",
             doublePatty ? "double" : "single",
             bread.toString(),
             addOnString.toString(),

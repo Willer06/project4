@@ -20,7 +20,7 @@ public class CurrentOrderController {
     private TextField totalAmountTextField;
 
     @FXML 
-    private ListView currentOrderListView;
+    private ListView<MenuItem> currentOrderListView;
     
     private static CurrentOrderController instance;
 
@@ -45,7 +45,7 @@ public class CurrentOrderController {
         double subTotal = 0.0;
         for(MenuItem item : currOrder.getItems()) {
             subTotal += item.price();
-            instance.currentOrderListView.getItems().add(item.toString());
+            instance.currentOrderListView.getItems().add(item);
         }
 
         instance.subTotalTextField.setText(String.format("%.2f", subTotal));

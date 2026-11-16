@@ -11,6 +11,7 @@ public class MainController {
     @FXML 
     private void switchToBurgerView() {
         ViewController.switchView("../resources/burger-view.fxml");
+        BurgerController.initializeCurrBurger();
     }
 
     @FXML 
