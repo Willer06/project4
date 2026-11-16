@@ -46,7 +46,7 @@ public class SideController {
         
         currSide = new Side(quantity, size, sideOption);
 
-        priceTextField.setText(String.format("%.2f", currSide.price()));
+        priceTextField.setText(String.format("$%.2f", currSide.price()));
     }
 
     @FXML 

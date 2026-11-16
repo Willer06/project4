@@ -32,7 +32,7 @@
                         <Font name="Arial Bold" size="26.0" />
                      </font>
                   </Label>
-                  <TextField prefHeight="25.0" prefWidth="397.0" />
+                  <TextField fx:id="sandwichTextField" editable="false" prefHeight="25.0" prefWidth="397.0" />
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0" style="-fx-background-color: #BAE2FF;">
@@ -42,7 +42,7 @@
                         <Font name="Arial Bold" size="16.0" />
                      </font>
                   </Label>
-                  <ComboBox prefHeight="25.0" prefWidth="154.0" />
+                  <ComboBox fx:id="sideComboBox" onAction="#updateCurrCombo" prefHeight="25.0" prefWidth="154.0" />
                   <ImageView fitHeight="95.0" fitWidth="103.0" pickOnBounds="true" preserveRatio="true" />
                </children>
             </HBox>
@@ -53,7 +53,7 @@
                         <Font name="Arial Bold" size="16.0" />
                      </font>
                   </Label>
-                  <ComboBox prefHeight="25.0" prefWidth="153.0" />
+                  <ComboBox fx:id="drinkComboBox" onAction="#updateCurrCombo" prefHeight="25.0" prefWidth="153.0" />
                   <ImageView fitHeight="79.0" fitWidth="97.0" pickOnBounds="true" preserveRatio="true" />
                </children>
             </HBox>
@@ -66,7 +66,7 @@
                   <Font name="Arial Bold" size="17.0" />
                </font>
             </Label>
-            <ComboBox fx:id="quantityComboBox" prefHeight="26.0" prefWidth="113.0">
+            <ComboBox fx:id="quantityComboBox" onAction="#updateCurrCombo" prefHeight="26.0" prefWidth="113.0">
                <items>
                   <FXCollections fx:factory="observableArrayList">
                      <Integer fx:value="1" />

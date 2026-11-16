@@ -46,7 +46,7 @@ public class BeverageController {
         
         currBeverage = new Beverage(quantity, size, flavor);
 
-        priceTextField.setText(String.format("%.2f", currBeverage.price()));
+        priceTextField.setText(String.format("$%.2f", currBeverage.price()));
     }
 
     @FXML 

@@ -22,6 +22,7 @@ public class ViewController {
             "../resources/sandwich-view.fxml",
             "../resources/beverage-view.fxml",
             "../resources/side-view.fxml",
+            "../resources/combo-view.fxml",
             "../resources/current-order-view.fxml",
             "../resources/orders-placed-view.fxml"
         ));

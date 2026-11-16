@@ -147,7 +147,7 @@
                   <Font name="Arial Bold" size="16.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="42.0" prefWidth="121.0" style="-fx-background-color: #6B222F; -fx-background-radius: 100;" text="combo" textFill="WHITE">
+            <Button onAction="#switchToComboView" mnemonicParsing="false" prefHeight="42.0" prefWidth="121.0" style="-fx-background-color: #6B222F; -fx-background-radius: 100;" text="combo" textFill="WHITE">
                <font>
                   <Font name="Arial Bold" size="16.0" />
                </font>

@@ -92,12 +92,18 @@ public class SandwichController {
         Integer quantity = quantityComboBox.getValue();
 
         currSandwich = new Sandwich(quantity, bread, protein, addOns);
-        priceTextField.setText(String.format("%.2f", currSandwich.price()));
+        priceTextField.setText(String.format("$%.2f", currSandwich.price()));
     }
 
     @FXML 
     private void addToOrder() {
         CurrentOrderController.currOrder.addItem(currSandwich);
+    }
+
+    @FXML 
+    private void switchToComboView() {
+        ViewController.switchView("../resources/combo-view.fxml");
+        ComboController.initializeCurrCombo(currSandwich);
     }
 
     @FXML

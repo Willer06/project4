@@ -44,7 +44,7 @@ public class Combo extends MenuItem {
             sandwichType = "Sandwich";
         }
 
-        return String.format("Combo, %s [%s] [%s] [%s] [%s] [%d] $.2f",
+        return String.format("Combo, %s [%s] [%s] [%s] [%s] [%d] $%.2f",
             sandwichType,
             sandwich.bread.toString(),
             addOnString.toString(),

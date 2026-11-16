@@ -1,29 +1,8 @@
 package project;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
-import javafx.scene.control.Button;
-
 public class MainController {
-    // @FXML 
-    // private Button burgersButton;
-
-    // @FXML 
-    // private Button sandwichesButton;
-
-    // @FXML 
-    // private Button beveragesButton;
-
-    // @FXML 
-    // private Button sidesButton;
-
-    // @FXML 
-    // private Button currentOrderButton;
-
-    // @FXML 
-    // private Button ordersPlacedButton;
-
     @FXML
     private void switchToMainView() {
         ViewController.switchView("../resources/main-view.fxml");
