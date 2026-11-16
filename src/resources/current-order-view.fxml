@@ -79,7 +79,7 @@
                <font>
                   <Font name="Arial Bold" size="15.0" />
                </font></Button>
-            <Button mnemonicParsing="false" prefHeight="48.0" prefWidth="177.0" style="-fx-background-color: #FFAA90; -fx-background-radius: 100;" text="Place Order" textFill="#000000ed">
+            <Button onAction="#handlePlaceOrder" mnemonicParsing="false" prefHeight="48.0" prefWidth="177.0" style="-fx-background-color: #FFAA90; -fx-background-radius: 100;" text="Place Order" textFill="#000000ed">
                <font>
                   <Font name="Arial Bold" size="15.0" />
                </font>

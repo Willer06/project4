@@ -34,9 +34,10 @@ public class CurrentOrderController {
         instance = this;
     }
 
-    public static void startNewOrder() {
+    public void startNewOrder() {
         uniqueOrderNumber++;
         currOrder = new Order(uniqueOrderNumber);
+        updateCurrentOrderListView();
     }
 
     public static void initializeCurrentOrderListView() {
@@ -53,9 +54,9 @@ public class CurrentOrderController {
             currentOrderListView.getItems().add(item);
         }
 
-        subTotalTextField.setText(String.format("%.2f", subTotal));
-        salesTaxTextField.setText(String.format("%.2f", subTotal * SALES_TAX));
-        totalAmountTextField.setText(String.format("%.2f", subTotal + subTotal * SALES_TAX));
+        subTotalTextField.setText(String.format("$%.2f", subTotal));
+        salesTaxTextField.setText(String.format("$%.2f", subTotal * SALES_TAX));
+        totalAmountTextField.setText(String.format("$%.2f", subTotal + subTotal * SALES_TAX));
     }
 
     @FXML 
@@ -65,6 +66,12 @@ public class CurrentOrderController {
 
         currOrder.removeItem(selectedItem);
         updateCurrentOrderListView();
+    }
+
+    @FXML 
+    private void handlePlaceOrder() {
+        OrdersPlacedController.currOrders.add(currOrder);
+        startNewOrder();
     }
 
     @FXML

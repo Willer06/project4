@@ -11,6 +11,10 @@ public class Order {
         this.items = new ArrayList<>();
     }
 
+    public int getNumber() {
+        return number;
+    }
+    
     public ArrayList<MenuItem> getItems() {
         return items;
     }

@@ -41,5 +41,6 @@ public class MainController {
     @FXML 
     private void switchToOrdersPlacedView() {
         ViewController.switchView("../resources/orders-placed-view.fxml");
+        OrdersPlacedController.initializeOrdersPlaced();
     }
 }
