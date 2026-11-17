@@ -47,7 +47,7 @@ public class Order {
      * @param item product to add.
      */
     public void addItem(MenuItem item) {
-        if (item != null) {
+        if(item != null) {
             items.add(item);
         }
     }
@@ -69,7 +69,7 @@ public class Order {
      */
     public double subtotal() {
         double total = 0.0;
-        for (MenuItem item : items) {
+        for(MenuItem item : items) {
             total += item.price();
         }
         return total;
@@ -82,6 +82,6 @@ public class Order {
      */
     @Override
     public String toString() {
-        return "Order #" + number;
+        return String.format("Order #%d", number);
     }
 }

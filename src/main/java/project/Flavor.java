@@ -50,5 +50,4 @@ public enum Flavor {
 
     /** Represents the watermelon option. */
     WATERMELON;
-
 }

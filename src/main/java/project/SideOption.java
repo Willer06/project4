@@ -37,16 +37,11 @@ public enum SideOption {
      */
     public double getPrice() {
         switch (this) {
-            case CHIPS:
-                return CHIPS_PRICE;
-            case FRIES:
-                return FRIES_PRICE;
-            case ONION_RINGS:
-                return ONION_RINGS_PRICE;
-            case APPLE_SLICES:
-                return APPLE_SLICES_PRICE;
-            default:
-                return 0.0;
+            case CHIPS:         return CHIPS_PRICE;
+            case FRIES:         return FRIES_PRICE;
+            case ONION_RINGS:   return ONION_RINGS_PRICE;
+            case APPLE_SLICES:  return APPLE_SLICES_PRICE;
+            default:            return 0.0;
         }
     }
 }

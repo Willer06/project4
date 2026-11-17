@@ -24,8 +24,8 @@ public class Side extends MenuItem {
      */
     public Side(int quantity, Size size, SideOption sideOption) {
         super(quantity);
-        this.size = java.util.Objects.requireNonNull(size);
-        this.sideOption = java.util.Objects.requireNonNull(sideOption);
+        this.size = size;
+        this.sideOption = sideOption;
     }
 
     /**
@@ -34,16 +34,16 @@ public class Side extends MenuItem {
      * @param size the new size.
      */
     public void setSize(Size size) {
-        this.size = java.util.Objects.requireNonNull(size);
+        this.size = size;
     }
 
     /**
-     * Changes the selected side variety.
+     * Changes the selected side option.
      *
      * @param sideOption the new side option.
      */
     public void setSide(SideOption sideOption) {
-        this.sideOption = java.util.Objects.requireNonNull(sideOption);
+        this.sideOption = sideOption;
     }
 
     /**
@@ -70,7 +70,11 @@ public class Side extends MenuItem {
      */
     @Override
     public String toString() {
-        return sideOption + ", " + size + " [" + quantity + "] $"
-                + String.format(java.util.Locale.US, "%.2f", price());
+        return String.format("Side, [%s, %s] [%d] $%.2f", 
+            sideOption.toString(), 
+            size.toString(),
+            quantity,
+            price()
+        );
     }
 }

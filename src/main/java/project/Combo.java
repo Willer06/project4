@@ -25,9 +25,9 @@ public class Combo extends MenuItem {
      */
     public Combo(int quantity, Sandwich sandwich, Beverage drink, Side side) {
         super(quantity);
-        this.sandwich = java.util.Objects.requireNonNull(sandwich);
-        this.drink = java.util.Objects.requireNonNull(drink);
-        this.side = java.util.Objects.requireNonNull(side);
+        this.sandwich = sandwich;
+        this.drink = drink;
+        this.side = side;
     }
 
     /**
@@ -36,7 +36,7 @@ public class Combo extends MenuItem {
      * @param drink replacement beverage.
      */
     public void setDrink(Beverage drink) {
-        this.drink = java.util.Objects.requireNonNull(drink);
+        this.drink = drink;
     }
 
     /**
@@ -45,7 +45,7 @@ public class Combo extends MenuItem {
      * @param side replacement side.
      */
     public void setSide(Side side) {
-        this.side = java.util.Objects.requireNonNull(side);
+        this.side = side;
     }
 
     /**
@@ -66,7 +66,29 @@ public class Combo extends MenuItem {
      */
     @Override
     public String toString() {
-        return "Combo [" + quantity + "] " + sandwich + " + " + drink + " + " + side
-                + " $" + String.format(java.util.Locale.US, "%.2f", price());
+        StringBuilder addOnString = new StringBuilder();
+        for(int i = 0; i < sandwich.addOns.size(); i++) {
+            addOnString.append(sandwich.addOns.get(i).toString());
+            if(i != sandwich.addOns.size() - 1) addOnString.append(", ");
+        }
+
+        String sandwichType = "";
+        if(sandwich instanceof Burger) {
+            Burger burger = (Burger)sandwich;
+            sandwichType = "Burger, " + (burger.getDoublePatty() ? "double" : "single");
+        }
+        else {
+            sandwichType = "Sandwich";
+        }
+
+        return String.format("Combo, %s [%s] [%s] [%s] [%s] [%d] $%.2f",
+            sandwichType,
+            sandwich.bread.toString(),
+            addOnString.toString(),
+            drink.toString(),
+            side.toString(),
+            quantity,
+            price()
+        );
     }
 }

@@ -43,18 +43,12 @@ public enum AddOns {
      */
     public double getPrice() {
         switch (this) {
-            case LETTUCE:
-                return LETTUCE_PRICE;
-            case TOMATOES:
-                return TOMATOES_PRICE;
-            case ONIONS:
-                return ONIONS_PRICE;
-            case AVOCADO:
-                return AVOCADO_PRICE;
-            case CHEESE:
-                return CHEESE_PRICE;
-            default:
-                return 0.0;
+            case LETTUCE:   return LETTUCE_PRICE;
+            case TOMATOES:  return TOMATOES_PRICE;
+            case ONIONS:    return ONIONS_PRICE;
+            case AVOCADO:   return AVOCADO_PRICE;
+            case CHEESE:    return CHEESE_PRICE;
+            default:        return 0.0;
         }
     }
 }

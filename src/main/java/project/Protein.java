@@ -37,16 +37,11 @@ public enum Protein {
      */
     public double getPrice() {
         switch (this) {
-            case ROAST_BEEF:
-                return ROAST_BEEF_PRICE;
-            case SALMON:
-                return SALMON_PRICE;
-            case CHICKEN:
-                return CHICKEN_PRICE;
-            case BEEF_PATTY:
-                return BEEF_PATTY_PRICE;
-            default:
-                return 0.0;
+            case ROAST_BEEF:    return ROAST_BEEF_PRICE;
+            case SALMON:        return SALMON_PRICE;
+            case CHICKEN:       return CHICKEN_PRICE;
+            case BEEF_PATTY:    return BEEF_PATTY_PRICE;
+            default:            return 0.0;
         }
     }
 }

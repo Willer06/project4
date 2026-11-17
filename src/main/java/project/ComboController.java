@@ -1,7 +1,7 @@
 package project;
 
 import java.net.URL;
-import java.util.Locale;
+
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -43,15 +43,15 @@ public class ComboController {
     @FXML
     public void initialize() {
         instance = this;
-        sideComboBox.setItems(FXCollections.observableArrayList(
-                SideOption.CHIPS, SideOption.APPLE_SLICES));
-        drinkComboBox.setItems(FXCollections.observableArrayList(
-                Flavor.COLA, Flavor.TEA, Flavor.JUICE));
+        sideComboBox.setItems(FXCollections.observableArrayList(SideOption.CHIPS, SideOption.APPLE_SLICES));
+        drinkComboBox.setItems(FXCollections.observableArrayList(Flavor.COLA, Flavor.TEA, Flavor.JUICE));
         sideComboBox.setValue(SideOption.CHIPS);
         drinkComboBox.setValue(Flavor.COLA);
+        
         for (int quantity = 1; quantity <= MAX_QUANTITY; quantity++) {
             quantityComboBox.getItems().add(quantity);
         }
+        
         quantityComboBox.setValue(1);
         sandwichTextField.setEditable(false);
         priceTextField.setEditable(false);
@@ -79,7 +79,7 @@ public class ComboController {
 
     /** Refreshes the prepared combo on the active screen after navigation. */
     public static void refreshPreparedCombo() {
-        if (instance != null) {
+        if(instance != null) {
             instance.quantityComboBox.setValue(preparedQuantity);
             instance.refreshCombo();
         }
@@ -101,36 +101,37 @@ public class ComboController {
         SideOption side = sideComboBox.getValue();
         Flavor drink = drinkComboBox.getValue();
         Integer quantity = quantityComboBox.getValue();
-        showImage(sideImageView, side == SideOption.APPLE_SLICES
-                ? "combo_apple_slices.png" : "combo_potato_chips.png");
-        String drinkImage = drink == Flavor.TEA ? "combo_tea_drink.png"
-                : (drink == Flavor.JUICE ? "combo_orange_juice.png" : "combo_cola_drink.png");
+        showImage(sideImageView, side == SideOption.APPLE_SLICES ? "combo_apple_slices.png" : "combo_potato_chips.png");
+        
+        String drinkImage = drink == Flavor.TEA ? "combo_tea_drink.png" : (drink == Flavor.JUICE ? "combo_orange_juice.png" : "combo_cola_drink.png");
         showImage(drinkImageView, drinkImage);
-        sandwichTextField.setText(preparedSandwich == null
-                ? "Choose a burger or sandwich first" : preparedSandwich.toString());
+        
+        sandwichTextField.setText(preparedSandwich == null ? "Choose a burger or sandwich first" : preparedSandwich.toString());
+
         if (preparedSandwich == null || side == null || drink == null || quantity == null) {
             priceTextField.clear();
             return;
         }
-        priceTextField.setText(String.format(Locale.US, "%.2f",
+        priceTextField.setText(String.format("%.2f",
                 new Combo(quantity, preparedSandwich,
-                        new Beverage(1, Size.MEDIUM, drink), new Side(1, Size.SMALL, side)).price()));
+                new Beverage(1, Size.MEDIUM, drink), new Side(1, Size.SMALL, side)).price()
+        ));
     }
 
     /** Adds the selected combo meal to the active order. */
     @FXML
     private void addToOrder() {
-        if (preparedSandwich == null || sideComboBox.getValue() == null
-                || drinkComboBox.getValue() == null || quantityComboBox.getValue() == null) {
+        if (preparedSandwich == null || sideComboBox.getValue() == null || drinkComboBox.getValue() == null || quantityComboBox.getValue() == null) {
             new Alert(Alert.AlertType.WARNING, "Choose a burger or sandwich first.").showAndWait();
             return;
         }
         Combo combo = new Combo(quantityComboBox.getValue(), preparedSandwich,
                 new Beverage(1, Size.MEDIUM, drinkComboBox.getValue()),
-                new Side(1, Size.SMALL, sideComboBox.getValue()));
+                new Side(1, Size.SMALL, sideComboBox.getValue())
+        );
+        
         CurrentOrderController.currOrder.addItem(combo);
-        new Alert(Alert.AlertType.INFORMATION,
-                "Combo added to Current Order.").showAndWait();
+        new Alert(Alert.AlertType.INFORMATION, "Combo added to Current Order.").showAndWait();
     }
 
     /** Returns to the main menu. */

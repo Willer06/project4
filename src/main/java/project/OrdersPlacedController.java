@@ -2,10 +2,9 @@ package project;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.util.ArrayList;
-import java.util.Locale;
+
 import java.util.Optional;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
@@ -50,7 +49,7 @@ public class OrdersPlacedController {
      * @param order nonempty order to be saved.
      */
     public static void saveOrder(Order order) {
-        if (order != null && !order.getItems().isEmpty()) {
+        if(order != null && !order.getItems().isEmpty()) {
             PLACED_ORDERS.add(order);
             refreshPlacedOrders();
         }
@@ -58,7 +57,7 @@ public class OrdersPlacedController {
 
     /** Refreshes the order selector on the currently loaded screen. */
     public static void refreshPlacedOrders() {
-        if (instance != null) {
+        if(instance != null) {
             instance.refreshOrders();
         }
     }
@@ -67,11 +66,14 @@ public class OrdersPlacedController {
     private void refreshOrders() {
         Order selected = ordersComboBox.getValue();
         ordersComboBox.setItems(FXCollections.observableArrayList(PLACED_ORDERS));
-        if (selected != null && PLACED_ORDERS.contains(selected)) {
+        
+        if(selected != null && PLACED_ORDERS.contains(selected)) {
             ordersComboBox.setValue(selected);
-        } else if (!PLACED_ORDERS.isEmpty()) {
+        }
+        else if(!PLACED_ORDERS.isEmpty()) {
             ordersComboBox.setValue(PLACED_ORDERS.get(0));
-        } else {
+        }
+        else {
             ordersComboBox.setValue(null);
         }
         displayOrder();
@@ -85,24 +87,27 @@ public class OrdersPlacedController {
             totalAmountTextField.clear();
             return;
         }
-        orderDetailsListView.getItems().setAll(
-                selected.getItems().stream().map(Object::toString).toList());
-        totalAmountTextField.setText(String.format(Locale.US, "%.2f",
-                selected.subtotal() * (1.0 + SALES_TAX)));
+        
+        for(MenuItem item : selected.getItems()) {
+            selected.getItems().add(item);
+        }
+        
+        totalAmountTextField.setText(String.format("%.2f", selected.subtotal() * (1.0 + SALES_TAX)));
     }
 
     /** Cancels and removes the selected placed order. */
     @FXML
     private void cancelOrder() {
         Order selected = ordersComboBox.getValue();
-        if (selected == null) {
+        if(selected == null) {
             new Alert(Alert.AlertType.WARNING, "Select an order to cancel.").showAndWait();
             return;
         }
-        Alert prompt = new Alert(Alert.AlertType.CONFIRMATION,
-                "Cancel " + selected + "?", ButtonType.YES, ButtonType.NO);
+
+        Alert prompt = new Alert(Alert.AlertType.CONFIRMATION, "Cancel " + selected + "?", ButtonType.YES, ButtonType.NO);
         Optional<ButtonType> answer = prompt.showAndWait();
-        if (answer.isPresent() && answer.get() == ButtonType.YES) {
+
+        if(answer.isPresent() && answer.get() == ButtonType.YES) {
             PLACED_ORDERS.remove(selected);
             refreshOrders();
         }
@@ -115,13 +120,12 @@ public class OrdersPlacedController {
      */
     private String exportText() {
         StringBuilder builder = new StringBuilder("RU Burger - Placed Orders\n\n");
-        for (Order order : PLACED_ORDERS) {
+        for(Order order : PLACED_ORDERS) {
             builder.append(order).append(System.lineSeparator());
-            for (project.MenuItem item : order.getItems()) {
+            for(project.MenuItem item : order.getItems()) {
                 builder.append("  ").append(item).append(System.lineSeparator());
             }
-            builder.append(String.format(Locale.US, "  Total (with tax): $%.2f\n\n",
-                    order.subtotal() * (1.0 + SALES_TAX)));
+            builder.append(String.format("  Total (with tax): $%.2f\n\n", order.subtotal() * (1.0 + SALES_TAX)));
         }
         return builder.toString();
     }
@@ -129,20 +133,24 @@ public class OrdersPlacedController {
     /** Allows the user to export all placed orders to a text file. */
     @FXML
     private void exportOrders() {
-        if (PLACED_ORDERS.isEmpty()) {
+        if(PLACED_ORDERS.isEmpty()) {
             new Alert(Alert.AlertType.WARNING, "There are no orders to export.").showAndWait();
             return;
         }
+
         FileChooser chooser = new FileChooser();
         chooser.setTitle("Export RU Burger Orders");
         chooser.setInitialFileName("ru-burger-orders.txt");
         chooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Text files", "*.txt"));
         File file = chooser.showSaveDialog(ordersComboBox.getScene().getWindow());
-        if (file == null) return;
+        
+        if(file == null) return;
+        
         try {
-            Files.writeString(file.toPath(), exportText(), StandardCharsets.UTF_8);
+            Files.writeString(file.toPath(), exportText());
             new Alert(Alert.AlertType.INFORMATION, "Orders exported successfully.").showAndWait();
-        } catch (IOException | SecurityException error) {
+        }
+        catch (IOException error) {
             new Alert(Alert.AlertType.ERROR, "Export failed: " + error.getMessage()).showAndWait();
         }
     }

@@ -1,6 +1,5 @@
 package project;
 
-import java.util.Locale;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -37,13 +36,16 @@ public class SideController {
     @FXML
     public void initialize() {
         instance = this;
+        
         sideOptionListView.setItems(FXCollections.observableArrayList(SideOption.values()));
         sideOptionListView.getSelectionModel().select(SideOption.CHIPS);
         sizeComboBox.setItems(FXCollections.observableArrayList(Size.values()));
         sizeComboBox.setValue(Size.SMALL);
-        for (int quantity = 1; quantity <= MAX_QUANTITY; quantity++) {
+        
+        for(int quantity = 1; quantity <= MAX_QUANTITY; quantity++) {
             quantityComboBox.getItems().add(quantity);
         }
+
         quantityComboBox.setValue(1);
         priceTextField.setEditable(false);
         registerListeners();
@@ -67,19 +69,21 @@ public class SideController {
         }
     }
 
-    /** Reconstructs the side and displays the selected total price. */
+    /** Updates the current side and displays the selected total price. */
     @FXML
     public void updateCurrSide() {
         SideOption option = sideOptionListView.getSelectionModel().getSelectedItem();
         Size size = sizeComboBox.getValue();
         Integer quantity = quantityComboBox.getValue();
-        if (option == null || size == null || quantity == null || quantity < 1) {
+        
+        if(option == null || size == null || quantity == null || quantity < 1) {
             currSide = null;
             priceTextField.clear();
             return;
         }
+        
         currSide = new Side(quantity, size, option);
-        priceTextField.setText(String.format(Locale.US, "%.2f", currSide.price()));
+        priceTextField.setText(String.format("%.2f", currSide.price()));
     }
 
     /** Adds the current side to the active order. */
@@ -90,6 +94,7 @@ public class SideController {
             new Alert(Alert.AlertType.WARNING, "Select a side, size and quantity.").showAndWait();
             return;
         }
+        
         CurrentOrderController.currOrder.addItem(currSide);
         new Alert(Alert.AlertType.INFORMATION, "Side added to Current Order.").showAndWait();
     }

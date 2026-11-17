@@ -14,5 +14,4 @@ public enum Size {
 
     /** Represents the large option. */
     LARGE;
-
 }

@@ -1,6 +1,5 @@
 package project;
 
-import java.util.Locale;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.CheckBox;
@@ -52,16 +51,18 @@ public class SandwichController {
     @FXML
     public void initialize() {
         ToggleGroup breads = new ToggleGroup();
-        RadioButton[] breadOptions = {briocheRadio, wheatRadio, pretzelRadio,
-                bagelRadio, sourdoughRadio};
-        for (RadioButton radio : breadOptions) radio.setToggleGroup(breads);
+        
+        RadioButton[] breadOptions = {briocheRadio, wheatRadio, pretzelRadio, bagelRadio, sourdoughRadio};
+        for(RadioButton radio : breadOptions) radio.setToggleGroup(breads);
         briocheRadio.setSelected(true);
+        
         ToggleGroup proteins = new ToggleGroup();
         roastBeefRadio.setToggleGroup(proteins);
         salmonRadio.setToggleGroup(proteins);
         chickenRadio.setToggleGroup(proteins);
         roastBeefRadio.setSelected(true);
-        for (int quantity = 1; quantity <= MAX_QUANTITY; quantity++) {
+        
+        for(int quantity = 1; quantity <= MAX_QUANTITY; quantity++) {
             quantityComboBox.getItems().add(quantity);
         }
         quantityComboBox.setValue(1);
@@ -72,18 +73,18 @@ public class SandwichController {
 
     /** Registers change listeners for all sandwich choices. */
     private void registerListeners() {
-        RadioButton[] radios = {briocheRadio, wheatRadio, pretzelRadio,
-                bagelRadio, sourdoughRadio, roastBeefRadio, salmonRadio, chickenRadio};
-        CheckBox[] extras = {lettuceCheck, tomatoesCheck, onionsCheck,
-                avocadoCheck, cheeseCheck};
-        for (RadioButton radio : radios) {
+        RadioButton[] radios = {briocheRadio, wheatRadio, pretzelRadio, bagelRadio, sourdoughRadio, roastBeefRadio, salmonRadio, chickenRadio};
+        CheckBox[] extras = {lettuceCheck, tomatoesCheck, onionsCheck, avocadoCheck, cheeseCheck};
+        
+        for(RadioButton radio : radios) {
             radio.selectedProperty().addListener((obs, before, after) -> updatePrice());
         }
-        for (CheckBox option : extras) {
+
+        for(CheckBox option : extras) {
             option.selectedProperty().addListener((obs, before, after) -> updatePrice());
         }
-        quantityComboBox.valueProperty()
-                .addListener((obs, before, after) -> updatePrice());
+
+        quantityComboBox.valueProperty().addListener((obs, before, after) -> updatePrice());
     }
 
     /**
@@ -92,28 +93,28 @@ public class SandwichController {
      * @return chosen bread type.
      */
     private Bread selectedBread() {
-        if (wheatRadio.isSelected()) return Bread.WHEAT_BREAD;
-        if (pretzelRadio.isSelected()) return Bread.PRETZEL;
-        if (bagelRadio.isSelected()) return Bread.BAGEL;
-        if (sourdoughRadio.isSelected()) return Bread.SOURDOUGH;
+        if (wheatRadio.isSelected())        return Bread.WHEAT_BREAD;
+        if (pretzelRadio.isSelected())      return Bread.PRETZEL;
+        if (bagelRadio.isSelected())        return Bread.BAGEL;
+        if (sourdoughRadio.isSelected())    return Bread.SOURDOUGH;
         return Bread.BRIOCHE;
     }
 
     /**
-     * Builds one sandwich definition from the selected options.
+     * Builds one sandwich from the selected options.
      *
      * @param quantity number of sandwiches to include.
      * @return selected sandwich with toppings.
      */
     private Sandwich buildSandwich(int quantity) {
-        Protein protein = salmonRadio.isSelected() ? Protein.SALMON
-                : (chickenRadio.isSelected() ? Protein.CHICKEN : Protein.ROAST_BEEF);
+        Protein protein = salmonRadio.isSelected() ? Protein.SALMON : (chickenRadio.isSelected() ? Protein.CHICKEN : Protein.ROAST_BEEF);
         Sandwich item = new Sandwich(quantity, selectedBread(), protein);
-        if (lettuceCheck.isSelected()) item.appendAddOn(AddOns.LETTUCE);
+        
+        if (lettuceCheck.isSelected())  item.appendAddOn(AddOns.LETTUCE);
         if (tomatoesCheck.isSelected()) item.appendAddOn(AddOns.TOMATOES);
-        if (onionsCheck.isSelected()) item.appendAddOn(AddOns.ONIONS);
-        if (avocadoCheck.isSelected()) item.appendAddOn(AddOns.AVOCADO);
-        if (cheeseCheck.isSelected()) item.appendAddOn(AddOns.CHEESE);
+        if (onionsCheck.isSelected())   item.appendAddOn(AddOns.ONIONS);
+        if (avocadoCheck.isSelected())  item.appendAddOn(AddOns.AVOCADO);
+        if (cheeseCheck.isSelected())   item.appendAddOn(AddOns.CHEESE);
         return item;
     }
 
@@ -125,7 +126,8 @@ public class SandwichController {
             priceTextField.clear();
             return;
         }
-        priceTextField.setText(String.format(Locale.US, "%.2f", buildSandwich(quantity).price()));
+
+        priceTextField.setText(String.format("%.2f", buildSandwich(quantity).price()));
     }
 
     /** Adds the selected sandwiches to Current Order. */
@@ -136,6 +138,7 @@ public class SandwichController {
             new Alert(Alert.AlertType.WARNING, "Select a valid quantity.").showAndWait();
             return;
         }
+
         CurrentOrderController.currOrder.addItem(buildSandwich(quantity));
         new Alert(Alert.AlertType.INFORMATION, "Sandwich added to Current Order.").showAndWait();
     }
@@ -145,6 +148,7 @@ public class SandwichController {
     private void openComboView() {
         Integer quantity = quantityComboBox.getValue();
         if (quantity == null || quantity < 1) return;
+        
         ComboController.prepareCombo(buildSandwich(1), quantity);
         ViewController.switchView("/combo-view.fxml");
         ComboController.refreshPreparedCombo();

@@ -24,8 +24,8 @@ public class Sandwich extends MenuItem {
      */
     public Sandwich(int quantity, Bread bread, Protein protein) {
         super(quantity);
-        this.bread = java.util.Objects.requireNonNull(bread, "Bread is required");
-        this.protein = java.util.Objects.requireNonNull(protein, "Protein is required");
+        this.bread = bread;
+        this.protein = protein;
         this.addOns = new ArrayList<>();
     }
 
@@ -35,7 +35,7 @@ public class Sandwich extends MenuItem {
      * @param bread newly selected bread.
      */
     public void setBread(Bread bread) {
-        this.bread = java.util.Objects.requireNonNull(bread);
+        this.bread = bread;
     }
 
     /**
@@ -44,7 +44,7 @@ public class Sandwich extends MenuItem {
      * @param protein newly selected protein.
      */
     public void setProtein(Protein protein) {
-        this.protein = java.util.Objects.requireNonNull(protein);
+        this.protein = protein;
     }
 
     /**
@@ -53,7 +53,7 @@ public class Sandwich extends MenuItem {
      * @param addOn topping to add.
      */
     public void appendAddOn(AddOns addOn) {
-        if (addOn != null && !addOns.contains(addOn)) {
+        if(addOn != null && !addOns.contains(addOn)) {
             addOns.add(addOn);
         }
     }
@@ -78,6 +78,7 @@ public class Sandwich extends MenuItem {
         for (AddOns option : addOns) {
             extra += option.getPrice();
         }
+
         return quantity * (protein.getPrice() + extra);
     }
 
@@ -88,7 +89,18 @@ public class Sandwich extends MenuItem {
      */
     @Override
     public String toString() {
-        return "Sandwich [" + quantity + "] " + protein + " [" + bread
-                + "] " + addOns + " $" + String.format(java.util.Locale.US, "%.2f", price());
+        StringBuilder addOnString = new StringBuilder();
+        for(int i = 0; i < addOns.size(); i++) {
+            addOnString.append(addOns.get(i).toString());
+            if(i != addOns.size() - 1) addOnString.append(", ");
+        }
+
+        return String.format("Sandwich, [%s] [%s] [%s] [%d] $%.2f",
+            protein.toString(),
+            bread.toString(),
+            addOnString.toString(),
+            quantity,
+            price()
+        );
     }
 }

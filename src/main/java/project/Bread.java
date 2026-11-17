@@ -20,5 +20,4 @@ public enum Bread {
 
     /** Represents the sourdough option. */
     SOURDOUGH;
-
 }

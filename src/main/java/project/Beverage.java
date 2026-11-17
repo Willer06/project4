@@ -26,8 +26,8 @@ public class Beverage extends MenuItem {
      */
     public Beverage(int quantity, Size size, Flavor flavor) {
         super(quantity);
-        this.size = java.util.Objects.requireNonNull(size);
-        this.flavor = java.util.Objects.requireNonNull(flavor);
+        this.size = size;
+        this.flavor = flavor;
     }
 
     /**
@@ -36,7 +36,7 @@ public class Beverage extends MenuItem {
      * @param size the new size.
      */
     public void setSize(Size size) {
-        this.size = java.util.Objects.requireNonNull(size);
+        this.size = size;
     }
 
     /**
@@ -45,7 +45,7 @@ public class Beverage extends MenuItem {
      * @param flavor the new flavor.
      */
     public void setFlavor(Flavor flavor) {
-        this.flavor = java.util.Objects.requireNonNull(flavor);
+        this.flavor = flavor;
     }
 
     /**
@@ -56,21 +56,20 @@ public class Beverage extends MenuItem {
     @Override
     public double price() {
         switch (size) {
-            case SMALL: return quantity * SMALL_PRICE;
-            case MEDIUM: return quantity * MEDIUM_PRICE;
-            case LARGE: return quantity * LARGE_PRICE;
-            default: return 0.0;
+            case SMALL:     return quantity * SMALL_PRICE;
+            case MEDIUM:    return quantity * MEDIUM_PRICE;
+            case LARGE:     return quantity * LARGE_PRICE;
+            default:        return 0.0;
         }
     }
 
     /**
-     * Describes the beverage for a receipt.
+     * Returns a beverage object's string representation
      *
-     * @return beverage description and price.
+     * @return beverage string representation
      */
     @Override
     public String toString() {
-        return flavor + ", " + size + " [" + quantity + "] $"
-                + String.format(java.util.Locale.US, "%.2f", price());
+        return String.format("%s, %s [%d] $%.2f", flavor.toString(), size.toString(), quantity, price());
     }
 }

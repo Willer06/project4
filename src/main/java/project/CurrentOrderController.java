@@ -1,6 +1,5 @@
 package project;
 
-import java.util.Locale;
 import java.util.Optional;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -40,6 +39,7 @@ public class CurrentOrderController {
         subTotalTextField.setEditable(false);
         salesTaxTextField.setEditable(false);
         totalAmountTextField.setEditable(false);
+
         MenuItem clearMenu = new MenuItem("Clear entire order");
         clearMenu.setOnAction(event -> clearOrder());
         currentOrderListView.setContextMenu(new ContextMenu(clearMenu));
@@ -55,15 +55,15 @@ public class CurrentOrderController {
 
     /** Updates the current-order view if it has already been loaded. */
     public static void loadCurrentOrder() {
-        if (instance != null) {
-            instance.refreshOrderView();
-        }
+        instance.refreshOrderView();
     }
 
     /** Rebuilds the list of items and refreshes tax and total. */
     private void refreshOrderView() {
-        currentOrderListView.getItems().setAll(currOrder.getItems());
-        updateAmounts(currOrder.subtotal());
+        if(instance != null) {
+            currentOrderListView.getItems().setAll(currOrder.getItems());
+            updateAmounts(currOrder.subtotal());
+        }
     }
 
     /**
@@ -73,9 +73,9 @@ public class CurrentOrderController {
      */
     private void updateAmounts(double subtotal) {
         double tax = subtotal * SALES_TAX;
-        subTotalTextField.setText(String.format(Locale.US, "%.2f", subtotal));
-        salesTaxTextField.setText(String.format(Locale.US, "%.2f", tax));
-        totalAmountTextField.setText(String.format(Locale.US, "%.2f", subtotal + tax));
+        subTotalTextField.setText(String.format("%.2f", subtotal));
+        salesTaxTextField.setText(String.format("%.2f", tax));
+        totalAmountTextField.setText(String.format("%.2f", subtotal + tax));
     }
 
     /** Removes only the currently selected menu item. */
@@ -93,8 +93,8 @@ public class CurrentOrderController {
     /** Clears every item in the current order after confirmation. */
     private void clearOrder() {
         if (currOrder.getItems().isEmpty()) return;
-        Alert confirmation = new Alert(Alert.AlertType.CONFIRMATION,
-                "Remove all products from the current order?", ButtonType.YES, ButtonType.NO);
+        Alert confirmation = new Alert(Alert.AlertType.CONFIRMATION, "Remove all products from the current order?", ButtonType.YES, ButtonType.NO);
+        
         Optional<ButtonType> result = confirmation.showAndWait();
         if (result.isPresent() && result.get() == ButtonType.YES) {
             currOrder.getItems().clear();
@@ -106,15 +106,14 @@ public class CurrentOrderController {
     @FXML
     private void placeOrder() {
         if (currOrder.getItems().isEmpty()) {
-            new Alert(Alert.AlertType.WARNING,
-                    "Add an item before placing an order.").showAndWait();
+            new Alert(Alert.AlertType.WARNING, "Add an item before placing an order.").showAndWait();
             return;
         }
+
         int orderNumber = currOrder.getNumber();
         OrdersPlacedController.saveOrder(currOrder);
         startNewOrder();
-        new Alert(Alert.AlertType.INFORMATION,
-                "Order #" + orderNumber + " placed successfully.").showAndWait();
+        new Alert(Alert.AlertType.INFORMATION, String.format("Order #%d placed successfully.", orderNumber)).showAndWait();
     }
 
     /** Returns to the main menu. */

@@ -32,6 +32,14 @@ public class Burger extends Sandwich {
     }
 
     /**
+     * Returns this burger's doublePatty attribute
+     * @return doublePatty attribute
+     */
+    public boolean getDoublePatty() {
+        return doublePatty;
+    }
+
+    /**
      * Computes burger prices with patties and selected toppings.
      *
      * @return total price for the selected quantity.
@@ -47,14 +55,24 @@ public class Burger extends Sandwich {
     }
 
     /**
-     * Describes the burger for the order list.
+     * Returns a burger's string representation
      *
-     * @return readable description and price.
+     * @return burger's string representation
      */
     @Override
     public String toString() {
-        return "Burger [" + quantity + "] " + (doublePatty ? "double" : "single")
-                + " [" + bread + "] " + addOns + " $"
-                + String.format(java.util.Locale.US, "%.2f", price());
+        StringBuilder addOnString = new StringBuilder();
+        for(int i = 0; i < addOns.size(); i++) {
+            addOnString.append(addOns.get(i).toString());
+            if(i != addOns.size() - 1) addOnString.append(", ");
+        }
+
+        return String.format("Burger, %s [%s] [%s] [%d] $%.2f",
+            doublePatty ? "double" : "single",
+            bread.toString(),
+            addOnString.toString(),
+            quantity,
+            price()
+        );
     }
 }

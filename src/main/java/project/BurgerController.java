@@ -1,6 +1,5 @@
 package project;
 
-import java.util.Locale;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.CheckBox;
@@ -49,34 +48,34 @@ public class BurgerController {
         singleRadio.setToggleGroup(patties);
         doubleRadio.setToggleGroup(patties);
         singleRadio.setSelected(true);
+
         ToggleGroup breads = new ToggleGroup();
         briocheRadio.setToggleGroup(breads);
         wheatRadio.setToggleGroup(breads);
         pretzelRadio.setToggleGroup(breads);
         briocheRadio.setSelected(true);
+        
         for (int quantity = 1; quantity <= MAX_QUANTITY; quantity++) {
             quantityComboBox.getItems().add(quantity);
         }
+        
         quantityComboBox.setValue(1);
         priceTextField.setEditable(false);
         registerListeners();
         updatePrice();
     }
 
-    /** Listens to every configurable burger choice. */
+    /** Listens to every burger choice. */
     private void registerListeners() {
-        RadioButton[] radios = {singleRadio, doubleRadio, briocheRadio,
-                wheatRadio, pretzelRadio};
-        CheckBox[] extras = {lettuceCheck, tomatoesCheck, onionsCheck,
-                avocadoCheck, cheeseCheck};
+        RadioButton[] radios = {singleRadio, doubleRadio, briocheRadio, wheatRadio, pretzelRadio};
+        CheckBox[] extras = {lettuceCheck, tomatoesCheck, onionsCheck, avocadoCheck, cheeseCheck};
         for (RadioButton option : radios) {
             option.selectedProperty().addListener((obs, before, after) -> updatePrice());
         }
         for (CheckBox option : extras) {
             option.selectedProperty().addListener((obs, before, after) -> updatePrice());
         }
-        quantityComboBox.valueProperty()
-                .addListener((obs, before, after) -> updatePrice());
+        quantityComboBox.valueProperty().addListener((obs, before, after) -> updatePrice());
     }
 
     /**
@@ -86,15 +85,15 @@ public class BurgerController {
      * @return configured burger.
      */
     private Burger buildBurger(int quantity) {
-        Bread bread = wheatRadio.isSelected() ? Bread.WHEAT_BREAD
-                : (pretzelRadio.isSelected() ? Bread.PRETZEL : Bread.BRIOCHE);
+        Bread bread = wheatRadio.isSelected() ? Bread.WHEAT_BREAD : (pretzelRadio.isSelected() ? Bread.PRETZEL : Bread.BRIOCHE);
         Burger burger = new Burger(quantity, bread);
         burger.setDoublePatty(doubleRadio.isSelected());
-        if (lettuceCheck.isSelected()) burger.appendAddOn(AddOns.LETTUCE);
+
+        if (lettuceCheck.isSelected())  burger.appendAddOn(AddOns.LETTUCE);
         if (tomatoesCheck.isSelected()) burger.appendAddOn(AddOns.TOMATOES);
-        if (onionsCheck.isSelected()) burger.appendAddOn(AddOns.ONIONS);
-        if (avocadoCheck.isSelected()) burger.appendAddOn(AddOns.AVOCADO);
-        if (cheeseCheck.isSelected()) burger.appendAddOn(AddOns.CHEESE);
+        if (onionsCheck.isSelected())   burger.appendAddOn(AddOns.ONIONS);
+        if (avocadoCheck.isSelected())  burger.appendAddOn(AddOns.AVOCADO);
+        if (cheeseCheck.isSelected())   burger.appendAddOn(AddOns.CHEESE);
         return burger;
     }
 
@@ -106,7 +105,7 @@ public class BurgerController {
             priceTextField.clear();
             return;
         }
-        priceTextField.setText(String.format(Locale.US, "%.2f", buildBurger(quantity).price()));
+        priceTextField.setText(String.format("%.2f", buildBurger(quantity).price()));
     }
 
     /** Adds the customized burger to the active order. */

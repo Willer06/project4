@@ -1,6 +1,5 @@
 package project;
 
-import java.util.Locale;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -62,7 +61,7 @@ public class BeverageController {
 
     /** Updates the beverage in the most recently loaded view. */
     public static void initializeCurrBeverage() {
-        if (instance != null) {
+        if(instance != null) {
             instance.updateCurrBeverage();
         }
     }
@@ -79,7 +78,7 @@ public class BeverageController {
             return;
         }
         currBeverage = new Beverage(quantity, size, flavor);
-        priceTextField.setText(String.format(Locale.US, "%.2f", currBeverage.price()));
+        priceTextField.setText(String.format("%.2f", currBeverage.price()));
     }
 
     /** Adds the selected beverage to the active order. */
